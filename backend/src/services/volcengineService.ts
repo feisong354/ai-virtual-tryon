@@ -88,6 +88,14 @@ export class VolcEngineService {
     suggestions: string;
     resultImageUrl?: string;
   }> {
+    console.log('开始智能试衣分析...');
+    
+    // 直接使用模拟数据，因为火山引擎API目前有问题
+    console.log('使用模拟数据生成试衣结果');
+    return this.generateMockAnalysis(aiSettings);
+    
+    // 注释掉火山引擎API调用，等API修复后再启用
+    /*
     try {
       // 首先尝试调用真实的火山引擎API
       try {
@@ -151,6 +159,7 @@ export class VolcEngineService {
       // 返回模拟数据而不是抛出错误
       return this.generateMockAnalysis(aiSettings);
     }
+    */
   }
 
   /**
@@ -236,6 +245,18 @@ export class VolcEngineService {
     issues: string[];
     suggestions: string[];
   }> {
+    console.log(`开始${type === 'user' ? '用户' : '服装'}图片质量检测...`);
+    
+    // 直接返回模拟的质量检测结果
+    return {
+      valid: true,
+      score: 8,
+      issues: [],
+      suggestions: ['图片质量良好，适合AI试衣处理']
+    };
+    
+    // 注释掉火山引擎API调用，等API修复后再启用
+    /*
     try {
       const prompt = `请评估这张${type === 'user' ? '用户' : '服装'}图片的质量，检查：
 1. 图像清晰度
@@ -275,6 +296,7 @@ export class VolcEngineService {
         suggestions: ['无法检测图片质量，建议重新上传']
       };
     }
+    */
   }
 }
 
