@@ -14,6 +14,8 @@ export const ResultPreview: React.FC = () => {
       return;
     }
 
+    console.log('开始生成试衣效果...', { userImage, clothingImage, aiSettings, backgroundType });
+    
     dispatch(setProcessing(true));
     dispatch(setProgress(0));
 
@@ -27,12 +29,15 @@ export const ResultPreview: React.FC = () => {
           backgroundType: backgroundType || undefined
         },
         (progress) => {
+          console.log('处理进度:', progress);
           dispatch(setProgress(progress));
         }
       );
       
+      console.log('试衣结果生成成功:', result);
       dispatch(setResultImage(result));
     } catch (error) {
+      console.error('试衣生成失败:', error);
       dispatch(setError('生成失败，请重试'));
     }
   };

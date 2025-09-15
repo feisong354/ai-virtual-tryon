@@ -68,8 +68,26 @@ async function processTryOnSession(
 
 // 生成试衣结果
 router.post('/generate', [
-  body('userImage').isURL().withMessage('用户图片URL无效'),
-  body('clothingImage').isURL().withMessage('服装图片URL无效'),
+  body('userImage').custom((value) => {
+    if (!value || typeof value !== 'string') {
+      throw new Error('用户图片URL无效');
+    }
+    // 简单的URL格式检查
+    if (!value.startsWith('http://') && !value.startsWith('https://')) {
+      throw new Error('用户图片URL格式无效');
+    }
+    return true;
+  }),
+  body('clothingImage').custom((value) => {
+    if (!value || typeof value !== 'string') {
+      throw new Error('服装图片URL无效');
+    }
+    // 简单的URL格式检查
+    if (!value.startsWith('http://') && !value.startsWith('https://')) {
+      throw new Error('服装图片URL格式无效');
+    }
+    return true;
+  }),
   body('aiSettings.fittingStyle').isIn(['loose', 'standard', 'tight']).withMessage('无效的贴合度设置'),
   body('aiSettings.effectIntensity').isIn(['natural', 'enhanced', 'fashion', 'none']).withMessage('无效的特效强度设置')
 ], async (req: express.Request, res: express.Response) => {
