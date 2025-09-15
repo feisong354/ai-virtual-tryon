@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tech-blue: #3498db;
+  --tech-dark: #2c3e50;
+  --light-gray: #f5f7fa;
+  --medium-gray: #e2e8f0;
+}
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  color: #2d3748;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1440px;
+  min-height: auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.header {
+  border-bottom: 1px solid var(--medium-gray);
+  height: 80px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--tech-dark);
+}
+
+.upload-card {
+  border: 2px dashed var(--medium-gray);
+  transition: all 0.3s;
+  background-color: #f8fafc;
+}
+
+.upload-card:hover, .upload-area:focus-within {
+  border-color: var(--tech-blue);
+  background-color: rgba(52, 152, 219, 0.05);
+}
+
+.btn-primary {
+  background-color: var(--tech-blue);
+  transition: all 0.2s;
+  color: white;
+  padding: 12px 28px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+}
+
+.btn-secondary {
+  background-color: white;
+  border: 1px solid var(--medium-gray);
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--tech-blue);
+  background-color: #f8fafc;
+}
+
+.preview-container {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.bg-option {
+  opacity: 0.7;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.bg-option:hover {
+  opacity: 1;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bg-option.active {
+  opacity: 1;
+  border: 2px solid var(--tech-blue);
+  transform: scale(1.05);
+}
+
+.footer {
+  background-color: var(--tech-dark);
+  color: white;
+}
